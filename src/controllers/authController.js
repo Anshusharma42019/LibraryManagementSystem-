@@ -161,6 +161,8 @@ const registerSuperAdmin = async (req, res) => {
     }
 
     // Secret key check - only someone who knows this key can create superadmin
+    console.log('ENV KEY:', JSON.stringify(process.env.SUPER_ADMIN_SECRET_KEY));
+    console.log('REQ KEY:', JSON.stringify(secretKey));
     if (secretKey !== process.env.SUPER_ADMIN_SECRET_KEY) {
       return res.status(403).json({ success: false, message: 'Invalid secret key.' });
     }
